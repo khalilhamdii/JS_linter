@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/check.rb'
 require_relative '../lib/run.rb'
-require_relative '../lib/validator.rb'
 require 'fileutils'
 
 
@@ -16,3 +15,10 @@ def get_user_file
   repo_path = gets.chomp
   repo_path
 end
+
+path = get_user_file
+
+run_linter = Run.new(path)
+# run_linter.show_code
+run_linter.run_validator
+run_linter.display_report
