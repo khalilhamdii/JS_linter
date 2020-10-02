@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require_relative '../lib/check.rb'
+require_relative '../lib/run.rb'
+require_relative '../lib/validator.rb'
+require 'fileutils'
+
+
+puts '###################################### Welcome to JS-LINTER ############################################'
+puts "\n"
+puts " JS-LINTER is a JavaScrip linter for beginners, it provides feedback about errors or warning in code little by little"
+puts "\n"
+
+def get_user_file 
+  puts 'Please enter the path of your JS file : '
+  puts "\n"
+  repo_path = gets.chomp
+  repo_path
+end
