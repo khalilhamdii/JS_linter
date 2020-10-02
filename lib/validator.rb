@@ -8,6 +8,22 @@ module Validator
 
   #Check if there's space around operators
   def space_around_op(line)
+    op_regexp = /\=|\+|\-|\*|\//
+    if op_regexp.match(line)
+    op_index = line.index(op_regexp)
+      return op_index unless / #{line[op_index]} /.match(line)
+    end
+    false
+  end
+
+  #Check if there's space after commas
+  def space_after_comma(line)
+    comma_regexp = /,/
+    if comma_regexp.match(line)
+    op_index = line.index(comma_regexp)
+      return op_index unless /, /.match(line)
+    end
+    false
   end
 
   #Check for indentation
