@@ -9,13 +9,8 @@ class Run
     @line_nbr = 1
   end
   
-  def show_code
-    File.foreach(@path) { |line| puts line }
-  end
-  
   def run_validator
     File.foreach(@path) { |line|
-      # line = line.chomp 
       pos = camelcase_name(line)
       @report << "Ln:#{@line_nbr}, Col:#{pos} => Use camelCase for identifier names (variables and functions)." if pos
       pos = space_around_op(line)

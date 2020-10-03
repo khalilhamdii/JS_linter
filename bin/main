@@ -18,6 +18,5 @@ end
 path = get_user_file
 
 run_linter = Run.new(path)
-# run_linter.show_code
 run_linter.run_validator
 run_linter.display_report
