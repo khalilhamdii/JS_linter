@@ -1,8 +1,4 @@
-firstName ="John", "khalil"
-lastName,"khalil" =
-  "Doeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
-price= 19.9
-tax = 0.2
-fullPrice =
-  price+
-  price * taxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+function ToCelsius(fahrenheit) {
+  return (5 / 9)*(fahrenheit- 32);
+a= b + c
+}

@@ -1,12 +1,11 @@
 #!/usr/bin/env ruby
-require_relative '../lib/check.rb'
 require_relative '../lib/run.rb'
 require 'fileutils'
 
 
 puts '###################################### Welcome to JS-LINTER ############################################'
 puts "\n"
-puts " JS-LINTER is a JavaScrip linter for beginners, it provides feedback about errors or warning in code little by little"
+puts " JS-LINTER is a JavaScript linter for beginners, it provides feedback about errors or warning in code little by little"
 puts "\n"
 
 def get_user_file 

@@ -16,25 +16,25 @@ class Run
   def run_validator
     File.foreach(@path) { |line|
       # line = line.chomp 
-      @report <<  "Line:#{@line_nbr} => Use camelCase for identifier names (variables and functions)" if camelcase_name(line) 
+      pos = camelcase_name(line)
+      @report << "Ln:#{@line_nbr}, Col:#{pos} => Use camelCase for identifier names (variables and functions)." if pos
       pos = space_around_op(line)
-      @report << "Line:#{@line_nbr}|Col:#{pos} => Always put spaces around operators ( = + - * / ), and after commas" if pos
+      @report << "Ln:#{@line_nbr}, Col:#{pos} => Always put spaces around operators ( = + - * / )." if pos
       pos = space_after_comma(line)
-      @report << "Line:#{@line_nbr}|Col:#{pos} => Always put a space after commas" if space_after_comma(line)
-      @report << "Line:#{@line_nbr} => Always use 2 spaces for indentation of code blocks" if indentation_check(line)  
-      @report << "Line:#{@line_nbr} => Name should be camelCase" if semicolon_check(line)  
-      @report << "Line:#{@line_nbr} => For readability, avoid lines longer than 80 characters" if line_length(line)
+      @report << "Ln:#{@line_nbr}, Col:#{pos} => Always put a space after commas." if space_after_comma(line)
+      @report << "Ln:#{@line_nbr} => Always use 2 spaces for indentation of code blocks." if indentation_check(line) 
+      pos = semicolon_check(line)
+      @report << "Ln:#{@line_nbr}, Col:#{pos} => Each line of code should end with a semicolon." if pos  
+      @report << "Ln:#{@line_nbr} => For readability, avoid lines longer than 80 characters." if line_length(line)
       @line_nbr += 1
     }
     puts "total code length is #{@line_nbr}"
   end
 
   def display_report
+    puts @report.length == 1 ? "1 error found !" : "#{@report.length} errors found !"
     @report.each do |error|
       puts error
     end
   end
-
-  
-
 end
