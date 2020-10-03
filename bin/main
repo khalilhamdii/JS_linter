@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # rubocop: disable Layout/LineLength
+
 require_relative '../lib/run.rb'
 require 'fileutils'
 
