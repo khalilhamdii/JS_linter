@@ -20,7 +20,7 @@ module Check
     name_match
   end
 
-  def is_a_block?(str)
+  def a_block?(str)
     block_regexp = /^}|{$/
     return true unless block_regexp.match(str)
   end

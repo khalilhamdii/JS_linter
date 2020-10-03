@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop: disable Layout/LineLength
 require_relative '../lib/run.rb'
 require 'fileutils'
 
@@ -7,7 +8,7 @@ puts "\n"
 puts ' JS-LINTER is a JavaScript linter for beginners, it provides feedback about errors or warning in code little by little'
 puts "\n"
 
-def get_user_file
+def user_file
   puts 'Please enter the path of your JS file : '
   puts "\n"
   validated = false
@@ -18,8 +19,10 @@ def get_user_file
   repo_path
 end
 
-path = get_user_file
+path = user_file
 
 run_linter = Run.new(path)
 run_linter.run_validator
 run_linter.display_report
+
+# rubocop: enable Layout/LineLength

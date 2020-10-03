@@ -1,10 +1,8 @@
 # spec/main_spec.rb
+# rubocop: disable Layout/LineLength
 require_relative '../lib/run.rb'
 require_relative '../lib/validator.rb'
 require_relative '../lib/check.rb'
-
-include Validator
-include Check
 
 describe Run.new('test_file.js') do
   it { is_expected.to have_attributes(path: 'test_file.js') }
@@ -13,9 +11,10 @@ describe Run.new('test_file.js') do
 end
 
 describe Check do
-  let(:line_sample1) { "let playerName = 'khalil';"}
-  let(:line_sample2) {'function add(argument1,argument2){'}
-  let(:line_sample3) {'let a = b + c ;'}
+  include Check
+  let(:line_sample1) { "let playerName = 'khalil';" }
+  let(:line_sample2) { 'function add(argument1,argument2){' }
+  let(:line_sample3) { 'let a = b + c ;' }
 
   describe '#var_in_line?' do
     it "Should return true if there's a variable declaration in the line of code" do
@@ -38,24 +37,26 @@ describe Check do
     end
   end
 
-  describe '#is_a_block?' do
+  describe '#a_block?' do
     it 'Should return true if the line is a block of code' do
-      expect(is_a_block?(line_sample3)).to eql(true)
+      expect(a_block?(line_sample3)).to eql(true)
     end
     it "Should return false if the line isn't a block of code" do
-      expect(is_a_block?(line_sample2)).not_to eql(true)
+      expect(a_block?(line_sample2)).not_to eql(true)
     end
   end
 end
 
 describe Validator do
-  let(:line_sample1) {"let playerName = 'khalil';"}
-  let(:line_sample2) {'function Add(argument1,argument2){'}
-  let(:line_sample3) {'a = b + c;'}
-  let(:line_sample4) {'a=b+ c'}
-  let(:line_sample5) {'[a,b,c]'}
-  let(:line_sample6) {'  a = b + c;'}
-  let(:line_sample7) {"function game(argument1,argument2){let playerName = 'player1'; let playerStatus = 'nil';let playerRecord = '0';}"}
+  include Check
+  include Validator
+  let(:line_sample1) { "let playerName = 'khalil';" }
+  let(:line_sample2) { 'function Add(argument1,argument2){' }
+  let(:line_sample3) { 'a = b + c;' }
+  let(:line_sample4) { 'a=b+ c' }
+  let(:line_sample5) { '[a,b,c]' }
+  let(:line_sample6) { '  a = b + c;' }
+  let(:line_sample7) { "function game(argument1,argument2){let playerName = 'player1'; let playerStatus = 'nil';let playerRecord = '0';}" }
 
   describe '#camelcase_name' do
     it 'Should return false if camelCase is used for identifier names (variables and functions).' do
@@ -108,3 +109,5 @@ describe Validator do
     end
   end
 end
+
+# rubocop: enable Layout/LineLength
