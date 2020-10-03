@@ -3,7 +3,7 @@
 module Check
 
   def var_in_line?(str)
-    var_regexp = /^var |^let |^const |^\w+/
+    var_regexp = /^var |^let |^constchec |^\w+/
     return true if var_regexp.match(str)
   end
   
@@ -20,6 +20,11 @@ module Check
       name_match = /\s?(\w)+(\s)?(\=)/.match(str).to_s.gsub(" ","").gsub("=","")
     end
     name_match
+  end
+
+  def is_a_block?(str)
+    block_regexp = /^}|{$/
+    return true unless block_regexp.match(str) 
   end
  
 end

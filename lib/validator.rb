@@ -33,11 +33,15 @@ module Validator
 
   #Check for indentation
   def indentation_check(line)
+    if is_a_block?(line)
+      indentation_index = 0
+      return indentation_index+1 unless /^(\s\s)/.match(line)
+    end
   end
 
   #Check for semicolon
   def semicolon_check(line)
-    unless func_in_line?(line)
+    if is_a_block?(line)
       semicolon_index = line.length
       return semicolon_index+1 unless /;$/.match(line)
     end
