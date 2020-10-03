@@ -2,16 +2,19 @@
 require_relative '../lib/run.rb'
 require 'fileutils'
 
-
 puts '###################################### Welcome to JS-LINTER ############################################'
 puts "\n"
-puts " JS-LINTER is a JavaScript linter for beginners, it provides feedback about errors or warning in code little by little"
+puts ' JS-LINTER is a JavaScript linter for beginners, it provides feedback about errors or warning in code little by little'
 puts "\n"
 
-def get_user_file 
+def get_user_file
   puts 'Please enter the path of your JS file : '
   puts "\n"
-  repo_path = gets.chomp
+  validated = false
+  until validated
+    repo_path = gets.chomp
+    validated = File.exist?(repo_path) ? true : (puts 'Please enter a valid path: ')
+  end
   repo_path
 end
 
