@@ -2,7 +2,7 @@
 require_relative 'check'
 module Validator
   include Check
-  # Check if variables and functions use camelCase names
+
   def camelcase_name(line)
     if get_name(line)
       name = get_name(line)
@@ -12,7 +12,6 @@ module Validator
     false
   end
 
-  # Check if there's space around operators
   def space_around_op(line)
     op_regexp = %r{\=|\+|-|\*|/}
     if op_regexp.match(line)
@@ -22,7 +21,6 @@ module Validator
     false
   end
 
-  # Check if there's space after commas
   def space_after_comma(line)
     comma_regexp = /,/
     if comma_regexp.match(line)
@@ -32,7 +30,6 @@ module Validator
     false
   end
 
-  # Check for indentation
   def indentation_check(line)
     if a_block?(line)
       indentation_index = 0
@@ -41,7 +38,6 @@ module Validator
     false
   end
 
-  # Check for semicolon
   def semicolon_check(line)
     if a_block?(line)
       semicolon_index = line.length
@@ -50,7 +46,6 @@ module Validator
     false
   end
 
-  # Check for line length
   def line_length(line)
     line.length > 80
   end
