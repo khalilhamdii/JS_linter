@@ -74,6 +74,22 @@ bin/main
 
 - Enter the path of Javascript file you want to scan and click ENTER.
 
+## Testing
+
+In order to run the tests, RSPEC should be installed.
+
+- Please run the following command line in your terminal to install :
+
+```bash
+gem install rspec
+```
+
+- When the installation is complete, type this command inside JS_linter folder to run the tests :
+
+```bash
+rspec
+```
+
 ## Authors
 
 👤 Khalil Hamdi
