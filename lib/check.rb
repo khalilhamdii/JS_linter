@@ -3,12 +3,12 @@
 module Check
   def var_in_line?(str)
     var_regexp = /^var |^let |^const |(\s?(\w)+(\s)?(\=))/
-    return true if var_regexp.match(str)
+    var_regexp.match(str) ? true : false
   end
 
   def func_in_line?(str)
     func_regexp = /^function/
-    return true if func_regexp.match(str)
+    func_regexp.match(str) ? true : false
   end
 
   def get_name(str)
@@ -22,6 +22,6 @@ module Check
 
   def a_block?(str)
     block_regexp = /^}|{$/
-    return true unless block_regexp.match(str)
+    !block_regexp.match(str) ? true : false
   end
 end
