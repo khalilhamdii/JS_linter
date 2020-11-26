@@ -4,6 +4,10 @@
 JS-LINTER is a JavaScript linter for beginners, it provides feedback about errors or warning in code little by little.
 </h1>
 
+## Screenshot
+
+![img](/images/main.png)
+
 ## Features
 
 JS-LINTER scans the given javascript code and returns a detailed report including the line and position of the error.
